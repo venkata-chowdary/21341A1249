@@ -8,7 +8,7 @@ const dummyData = [
     rating: 4.5,
     discount: 10,
     availability: true,
-    image: "https://via.placeholder.com/200",
+    image: "https://images.unsplash.com/photo-1516512990175-6f73b4c6e80b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTc3MzR8MHwxfGFsbHwxfHx8fHx8fHwxNjM5MjY5NTc0&ixlib=rb-1.2.1&q=80&w=400",
   },
   {
     id: 2,
@@ -19,7 +19,7 @@ const dummyData = [
     rating: 4.0,
     discount: 15,
     availability: true,
-    image: "https://via.placeholder.com/200",
+    image: "https://images.unsplash.com/photo-1574415002455-24be4c80bc94?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTc3MzR8MHwxfGFsbHwyfHx8fHx8fHwxNjM5MjY5NjI4&ixlib=rb-1.2.1&q=80&w=400",
   },
   {
     id: 3,
@@ -30,7 +30,7 @@ const dummyData = [
     rating: 4.8,
     discount: 5,
     availability: true,
-    image: "https://via.placeholder.com/200",
+    image: "https://images.unsplash.com/photo-1593642631923-3e19e7a3e6c0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTc3MzR8MHwxfGFsbHwyfHx8fHx8fHwxNjM5MjY5NjU2&ixlib=rb-1.2.1&q=80&w=400",
   },
   {
     id: 4,
@@ -41,7 +41,7 @@ const dummyData = [
     rating: 4.6,
     discount: 20,
     availability: false,
-    image: "https://via.placeholder.com/200",
+    image: "https://images.unsplash.com/photo-1587200438107-747aa17c8f68?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTc3MzR8MHwxfGFsbHw0fHx8fHx8fHwxNjM5MjY5Njc1&ixlib=rb-1.2.1&q=80&w=400",
   },
   {
     id: 5,
@@ -52,7 +52,7 @@ const dummyData = [
     rating: 4.2,
     discount: 10,
     availability: true,
-    image: "https://via.placeholder.com/200",
+    image: "https://images.unsplash.com/photo-1593642632400-9b4a5e1a0e6b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTc3MzR8MHwxfGFsbHw1fHx8fHx8fHwxNjM5MjY5NzY2&ixlib=rb-1.2.1&q=80&w=400",
   },
   {
     id: 6,
@@ -63,7 +63,7 @@ const dummyData = [
     rating: 4.3,
     discount: 25,
     availability: true,
-    image: "https://via.placeholder.com/200",
+    image: "https://images.unsplash.com/photo-1523707486558-5c5b8724e84d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTc3MzR8MHwxfGFsbHw2fHx8fHx8fHwxNjM5MjY5ODg4&ixlib=rb-1.2.1&q=80&w=400",
   },
   {
     id: 7,
@@ -74,7 +74,7 @@ const dummyData = [
     rating: 4.7,
     discount: 30,
     availability: true,
-    image: "https://via.placeholder.com/200",
+    image: "https://images.unsplash.com/photo-1586969284214-df7c250a2eb8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTc3MzR8MHwxfGFsbHw3fHx8fHx8fHwxNjM5MjY5ODk0&ixlib=rb-1.2.1&q=80&w=400",
   },
   {
     id: 8,
@@ -85,7 +85,7 @@ const dummyData = [
     rating: 4.0,
     discount: 5,
     availability: true,
-    image: "https://via.placeholder.com/200",
+    image: "https://images.unsplash.com/photo-1565689612591-9e73a8c8f58b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTc3MzR8MHwxfGFsbHw4fHx8fHx8fHwxNjM5MjY5OTU5&ixlib=rb-1.2.1&q=80&w=400",
   },
   {
     id: 9,
@@ -96,7 +96,7 @@ const dummyData = [
     rating: 4.6,
     discount: 15,
     availability: true,
-    image: "https://via.placeholder.com/200",
+    image: "https://images.unsplash.com/photo-1586202535635-2b3a84d76be2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTc3MzR8MHwxfGFsbHw5fHx8fHx8fHwxNjM5MjY5OTY5&ixlib=rb-1.2.1&q=80&w=400",
   },
   {
     id: 10,
@@ -107,7 +107,7 @@ const dummyData = [
     rating: 4.1,
     discount: 10,
     availability: true,
-    image: "https://via.placeholder.com/200",
+    image: "https://images.unsplash.com/photo-1593642631984-1c8f9e0b9f4b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTc3MzR8MHwxfGFsbHwxMHx8fHx8fHwxNjM5MjY5OTg0&ixlib=rb-1.2.1&q=80&w=400",
   },
   {
     id: 11,
@@ -118,7 +118,7 @@ const dummyData = [
     rating: 4.4,
     discount: 20,
     availability: true,
-    image: "https://via.placeholder.com/200",
+    image: "https://images.unsplash.com/photo-1516017970434-33ec6b375ed9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTc3MzR8MHwxfGFsbHwxMXx8fHx8fHwxNjM5MjY5OTk5&ixlib=rb-1.2.1&q=80&w=400",
   },
   {
     id: 12,
@@ -129,7 +129,7 @@ const dummyData = [
     rating: 4.7,
     discount: 15,
     availability: true,
-    image: "https://via.placeholder.com/200",
+    image: "https://images.unsplash.com/photo-1593642683678-2cf84c68e479?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTc3MzR8MHwxfGFsbHwxMnx8fHx8fHwxNjM5MjY5MTA3&ixlib=rb-1.2.1&q=80&w=400",
   },
   {
     id: 13,
@@ -140,7 +140,7 @@ const dummyData = [
     rating: 4.0,
     discount: 0,
     availability: true,
-    image: "https://via.placeholder.com/200",
+    image: "https://images.unsplash.com/photo-1582251399237-b4ccfd9a1499?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTc3MzR8MHwxfGFsbHwxM3x8fHx8fHwxNjM5MjY5MTMx&ixlib=rb-1.2.1&q=80&w=400",
   },
   {
     id: 14,
@@ -151,7 +151,7 @@ const dummyData = [
     rating: 4.3,
     discount: 10,
     availability: true,
-    image: "https://via.placeholder.com/200",
+    image: "https://images.unsplash.com/photo-1612846778889-417e4a7c121c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTc3MzR8MHwxfGFsbHwxNHx8fHx8fHwxNjM5MjY5MTg2&ixlib=rb-1.2.1&q=80&w=400",
   },
   {
     id: 15,
@@ -162,7 +162,7 @@ const dummyData = [
     rating: 4.5,
     discount: 5,
     availability: true,
-    image: "https://via.placeholder.com/200",
+    image: "https://images.unsplash.com/photo-1603997207275-120b5a2db7aa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTc3MzR8MHwxfGFsbHw1MXx8fHx8fHwxNjM5MjY5MTk4&ixlib=rb-1.2.1&q=80&w=400",
   },
   {
     id: 16,
@@ -173,7 +173,7 @@ const dummyData = [
     rating: 4.8,
     discount: 15,
     availability: false,
-    image: "https://via.placeholder.com/200",
+    image: "https://images.unsplash.com/photo-1529618671512-97c4f3a0b8a0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTc3MzR8MHwxfGFsbHw4Mnx8fHx8fHwxNjM5MjY5MjA5&ixlib=rb-1.2.1&q=80&w=400",
   },
 ];
 
