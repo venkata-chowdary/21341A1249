@@ -1,43 +1,79 @@
 const express = require('express');
 const axios = require('axios');
-const cors = require('cors');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(cors());
-
-// Base URL for the test server APIs
 const BASE_URL = 'http://20.244.56.144/test/companies';
 
-// Get top N laptops for the specified company
-app.get('/categories/laptops', async (req, res) => {
-    const { top = 10, minPrice = 1, maxPrice = 10000 } = req.query; // Default values
+app.get('/categories/:categoryname/products', async (req, res) => {
+    const { categoryname } = req.params;
+    const { n, minPrice, maxPrice, sort, order, page } = req.query;
+
+    if (!n || isNaN(n)) {
+        return res.status(400).json({ error: "Parameter 'n' must be a valid number" });
+    }
+
+    const companies = ["AMZ", "FUP", "SNP", "MYN", "AZO"];
+    let products = [];
 
     try {
-        const response = await axios.get(`${BASE_URL}/AMZ/categories/Laptop/products`, {
-            params: {
-                top,
-                minPrice,
-                maxPrice
-            },
-            headers: {
-                'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJNYXBDbGFpbXMiOnsiZXhwIjoxNzIzNjk5MDQ0LCJpYXQiOjE3MjM2OTg3NDQsImlzcyI6IkFmZm9yZG1lZCIsImp0aSI6ImQxY2Y0MTFiLTAzN2MtNDVkYy04ZWMwLTEyMzQ1NGZlZThjOCIsInN1YiI6ImNob3dkYXJ5aW1tYW5uaUBnbWFpbC5jb20ifSwiY29tcGFueU5hbWUiOiJBRkZPUkRNRUQiLCJjbGllbnRJRCI6ImQxY2Y0MTFiLTAzN2MtNDVkYy04ZWMwLTEyMzQ1NGZlZThjOCIsImNsaWVudFNlY3JldCI6IkhrSm5XRGx6WEtXUldvSmUiLCJvd25lck5hbWUiOiJWZW5rYXQgSW1tYW5uaSIsIm93bmVyRW1haWwiOiJjaG93ZGFyeWltbWFubmlAZ21haWwuY29tIiwicm9sbE5vIjoiMjEzNDFBMTI0OSJ9.7yOZQLYs31mrOuOByD1N3CR-z5g_kan53HfEmtjVRCY'
-            }
-        });
+        for (const company of companies) {
+            const url = `${BASE_URL}/${company}/categories/${categoryname}/products?top=${n}&minPrice=${minPrice || 0}&maxPrice=${maxPrice || 100000}`;
+            const response = await axios.get(url);
+            products.push(...response.data.map(product => ({
+                ...product,
+                id: `${company}-${product.productName}-${product.price}`,
+                company
+            })));
+        }
 
-        // Log the products to the console
-        console.log(response.data);
+        if (sort) {
+            products.sort((a, b) => {
+                if (order === 'desc') {
+                    return b[sort] - a[sort];
+                }
+                return a[sort] - b[sort];
+            });
+        }
 
-        // Send the response back to the client
-        res.json(response.data);
+        const itemsPerPage = Math.min(parseInt(n), 10);
+        const pageNum = page ? parseInt(page) : 1;
+        const paginatedProducts = products.slice((pageNum - 1) * itemsPerPage, pageNum * itemsPerPage);
+
+        res.json(paginatedProducts);
     } catch (error) {
-        console.error('Error fetching products:', error);
-        res.status(500).json({ error: 'An error occurred while fetching products.' });
+        res.status(500).json({ error: 'Failed to retrieve products' });
     }
 });
 
-// Start the server
+app.get('/categories/:categoryname/products/:productid', async (req, res) => {
+    const { categoryname, productid } = req.params;
+
+    const companies = ["AMZ", "FUP", "SNP", "MYN", "AZO"];
+    let productDetails = null;
+
+    try {
+        for (const company of companies) {
+            const url = `${BASE_URL}/${company}/categories/${categoryname}/products?top=100&minPrice=0&maxPrice=100000`;
+            const response = await axios.get(url);
+            const product = response.data.find(p => `${company}-${p.productName}-${p.price}` === productid);
+            if (product) {
+                productDetails = { ...product, company };
+                break;
+            }
+        }
+
+        if (productDetails) {
+            res.json(productDetails);
+        } else {
+            res.status(404).json({ error: 'Product not found' });
+        }
+    } catch (error) {
+        res.status(500).json({ error: 'Failed to retrieve product details' });
+    }
+});
+
 app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+    console.log(`Server is running on port ${PORT}`);
 });
