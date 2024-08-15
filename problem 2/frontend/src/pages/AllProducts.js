@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import ProductList from '../components/ProductList';
 import Filters from '../components/Filters';
-import dummyData from './dummyData'; // Import the dummy data
+import dummyData from './dummyData'; 
 
 const AllProducts = () => {
   const [products, setProducts] = useState(dummyData); // Use dummy data
