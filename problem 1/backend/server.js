@@ -15,18 +15,17 @@ app.get('/categories/:categoryname/products', async (req, res) => {
     }
 
     const companies = ["AMZ", "FUP", "SNP", "MYN", "AZO"];
-    let products = [];
 
     try {
-        for (const company of companies) {
+        const products = (await Promise.all(companies.map(async company => {
             const url = `${BASE_URL}/${company}/categories/${categoryname}/products?top=${n}&minPrice=${minPrice || 0}&maxPrice=${maxPrice || 100000}`;
             const response = await axios.get(url);
-            products.push(...response.data.map(product => ({
+            return response.data.map(product => ({
                 ...product,
                 id: `${company}-${product.productName}-${product.price}`,
                 company
-            })));
-        }
+            }));
+        }))).flat();
 
         if (sort) {
             products.sort((a, b) => {
@@ -51,18 +50,14 @@ app.get('/categories/:categoryname/products/:productid', async (req, res) => {
     const { categoryname, productid } = req.params;
 
     const companies = ["AMZ", "FUP", "SNP", "MYN", "AZO"];
-    let productDetails = null;
 
     try {
-        for (const company of companies) {
+        const productDetails = await Promise.any(companies.map(async company => {
             const url = `${BASE_URL}/${company}/categories/${categoryname}/products?top=100&minPrice=0&maxPrice=100000`;
             const response = await axios.get(url);
             const product = response.data.find(p => `${company}-${p.productName}-${p.price}` === productid);
-            if (product) {
-                productDetails = { ...product, company };
-                break;
-            }
-        }
+            return product ? { ...product, company } : null;
+        }));
 
         if (productDetails) {
             res.json(productDetails);
