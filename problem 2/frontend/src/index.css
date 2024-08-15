@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: theme('colors.dark-background');
+  color: theme('colors.dark-text');
+}
+
+a {
+  color: theme('colors.primary');
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: theme('colors.dark-accent');
+  text-decoration: none;
+}
+
+button {
+  transition: transform 0.2s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+}
