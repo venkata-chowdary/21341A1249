@@ -18,7 +18,6 @@ const App = () => {
           </Routes>
         </main>
         <footer className="p-4 bg-dark-card text-center text-sm text-gray-500">
-          © 2024 Modern Web. All rights reserved.
         </footer>
       </div>
     </Router>

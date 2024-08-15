@@ -1,14 +1,18 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import ProductList from '../components/ProductList';
 import Filters from '../components/Filters';
-import dummyData from './dummyData'; 
+import dummyData from './dummyData';
 
 const AllProducts = () => {
-  const [products, setProducts] = useState(dummyData); // Use dummy data
-  const [filteredProducts, setFilteredProducts] = useState(dummyData); // For filtered products
+  const [products, setProducts] = useState(dummyData); 
+  const [filteredProducts, setFilteredProducts] = useState(dummyData); 
   const [filters, setFilters] = useState({
     minPrice: '',
     maxPrice: '',
+    category: '',
+    company: '',
+    rating: '',
+    availability: '',
   });
 
   const handleFilterChange = (filterType, value) => {
@@ -25,6 +29,22 @@ const AllProducts = () => {
   const applyFilters = () => {
     let filtered = dummyData;
 
+    if (filters.category) {
+      filtered = filtered.filter(product => product.category === filters.category);
+    }
+
+    if (filters.company) {
+      filtered = filtered.filter(product => product.company === filters.company);
+    }
+
+    if (filters.rating) {
+      filtered = filtered.filter(product => product.rating >= parseFloat(filters.rating));
+    }
+
+    if (filters.availability) {
+      filtered = filtered.filter(product => product.availability === filters.availability);
+    }
+
     if (filters.minPrice) {
       filtered = filtered.filter(product => product.price >= parseFloat(filters.minPrice));
     }
@@ -37,9 +57,13 @@ const AllProducts = () => {
   };
 
   return (
-    <div>
-      <Filters onFilterChange={handleFilterChange} />
-      <ProductList products={filteredProducts} />
+    <div className="flex">
+      <aside className="w-1/4">
+        <Filters onFilterChange={handleFilterChange} />
+      </aside>
+      <main className="w-3/4">
+        <ProductList products={filteredProducts} />
+      </main>
     </div>
   );
 };
